@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { UploadCloud, File as FileIcon, X } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
@@ -14,28 +15,30 @@ export default function DataUpload() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
   const [showMetadata, setShowMetadata] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const { toast } = useToast();
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
+  useEffect(() => {
+    if (error) {
+      toast({
+        title: 'Invalid File Type',
+        description: error,
+        variant: 'destructive',
+      });
+      setError(null);
+    }
+  }, [error, toast]);
+
+  const onDrop = useCallback((acceptedFiles: File[], rejectedFiles: any[]) => {
     if (acceptedFiles.length > 0) {
       const selectedFile = acceptedFiles[0];
-      if (
-        selectedFile.type === 'text/csv' ||
-        selectedFile.type === 'application/vnd.ms-excel' ||
-        selectedFile.type ===
-          'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-      ) {
-        setFile(selectedFile);
-        setShowMetadata(false);
-      } else {
-        toast({
-          title: 'Invalid File Type',
-          description: 'Please upload a CSV or XLSX file.',
-          variant: 'destructive',
-        });
-      }
+      setFile(selectedFile);
+      setShowMetadata(false);
+      setError(null);
+    } else if (rejectedFiles.length > 0) {
+        setError('Please upload a CSV or XLSX file.');
     }
-  }, [toast]);
+  }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
