@@ -19,6 +19,14 @@ import {
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -76,16 +84,31 @@ function AppLayout({ children }: { children: React.ReactNode }) {
             </SidebarMenu>
           </SidebarContent>
           <SidebarFooter className="p-4">
-            <div className="flex items-center gap-3 p-3 rounded-lg bg-card border">
-              <Avatar>
-                <AvatarImage src="https://placehold.co/40x40" />
-                <AvatarFallback>DW</AvatarFallback>
-              </Avatar>
-              <div className="flex flex-col">
-                <span className="font-semibold text-sm">Analytica Pro User</span>
-                <span className="text-xs text-muted-foreground">user@analytica.pro</span>
-              </div>
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-card border cursor-pointer hover:bg-muted">
+                    <Avatar>
+                        <AvatarImage src="https://placehold.co/40x40" data-ai-hint="male avatar" />
+                        <AvatarFallback>DW</AvatarFallback>
+                    </Avatar>
+                    <div className="flex flex-col text-left">
+                        <span className="font-semibold text-sm">Analytica Pro User</span>
+                        <span className="text-xs text-muted-foreground">user@analytica.pro</span>
+                    </div>
+                </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56 mb-2">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem>Billing</DropdownMenuItem>
+                <DropdownMenuItem>Team</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                    <Link href="/login">Log Out</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </SidebarFooter>
         </SidebarInset>
       </Sidebar>
