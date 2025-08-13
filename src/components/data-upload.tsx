@@ -18,17 +18,6 @@ export default function DataUpload() {
   const [error, setError] = useState<string | null>(null);
   const { toast } = useToast();
 
-  useEffect(() => {
-    if (error) {
-      toast({
-        title: 'Invalid File Type',
-        description: error,
-        variant: 'destructive',
-      });
-      setError(null);
-    }
-  }, [error, toast]);
-
   const onDrop = useCallback((acceptedFiles: File[], rejectedFiles: any[]) => {
     if (acceptedFiles.length > 0) {
       const selectedFile = acceptedFiles[0];
@@ -39,6 +28,17 @@ export default function DataUpload() {
         setError('Please upload a CSV or XLSX file.');
     }
   }, []);
+
+  useEffect(() => {
+    if (error) {
+      toast({
+        title: 'Invalid File Type',
+        description: error,
+        variant: 'destructive',
+      });
+      setError(null);
+    }
+  }, [error, toast]);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
