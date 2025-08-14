@@ -66,6 +66,14 @@ function AppLayout({ children }: { children: React.ReactNode }) {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={isActive('/version-control')} tooltip="Version History">
+                  <Link href="/version-control">
+                    <GitBranch />
+                    <span>Version History</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={isActive('/integrations')} tooltip="Integrations">
                   <Link href="/integrations">
                     <GitBranch />
