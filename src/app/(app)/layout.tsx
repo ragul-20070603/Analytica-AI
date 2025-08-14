@@ -53,15 +53,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
                 <SidebarMenuButton asChild isActive={isActive('/datasets')} tooltip="Datasets">
                   <Link href="/datasets">
                     <UploadCloud />
-                    <span>Datasets & Versions</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={isActive('/cleaning')} tooltip="Cleaning">
-                  <Link href="/cleaning">
-                    <Beaker />
-                    <span>Data Cleaning</span>
+                    <span>Data Workflow</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

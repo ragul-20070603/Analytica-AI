@@ -8,21 +8,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Input } from '@/components/ui/input';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { AlertCircle, PlusCircle, Trash2 } from 'lucide-react';
 
-export default function CleaningPage() {
+export default function CleaningConfiguration() {
   return (
-    <div className="space-y-8">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold">Data Cleaning & Validation</h1>
-        <p className="text-muted-foreground">Configure and apply cleaning steps to your dataset.</p>
-      </div>
-
       <Card>
         <CardHeader>
-          <CardTitle>Configuration</CardTitle>
+          <CardTitle>Step 2: Configure Cleaning Rules</CardTitle>
           <CardDescription>
             Set up the cleaning and validation pipeline for your data. Each step will be executed in order.
           </CardDescription>
@@ -167,11 +160,7 @@ export default function CleaningPage() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
-           <div className="mt-8 flex justify-end">
-            <Button size="lg">Apply Cleaning & Validate</Button>
-          </div>
         </CardContent>
       </Card>
-    </div>
   );
 }
