@@ -1,13 +1,13 @@
 'use server';
 
-import { naturalLanguageQuery } from '@/ai/flows/nlq-interface';
-import { z } from 'zod';
+import {naturalLanguageQuery} from '@/ai/flows/nlq-interface';
+import {z} from 'zod';
 
 const NlqActionSchema = z.object({
   query: z.string(),
 });
 
-export async function nlqAction(formData: FormData) {
+export async function nlqAction(prevState: any, formData: FormData) {
   try {
     const validatedData = NlqActionSchema.parse({
       query: formData.get('query'),
@@ -30,12 +30,12 @@ export async function nlqAction(formData: FormData) {
       datasetDescription,
     });
 
-    return { success: true, data: result };
+    return {success: true, data: result, error: null};
   } catch (error) {
     console.error(error);
     if (error instanceof z.ZodError) {
-      return { success: false, error: 'Invalid input.' };
+      return {success: false, error: 'Invalid input.', data: null};
     }
-    return { success: false, error: 'An unexpected error occurred.' };
+    return {success: false, error: 'An unexpected error occurred.', data: null};
   }
 }
