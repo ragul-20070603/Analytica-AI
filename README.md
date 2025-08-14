@@ -1,4 +1,5 @@
 ANALYTICA AI
+
 Analytica AI is a modern, AI-powered platform designed for seamless data ingestion, cleaning, analysis, and reporting. It provides a user-friendly interface to handle complex data workflows, leveraging generative AI to offer smart features like automated data cleaning, natural language querying, and explainable AI (XAI) for transparent processing.
 The application also features a prototype of a blockchain-based version history system, showcasing how data provenance and immutability can be achieved for critical datasets.
 
