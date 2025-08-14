@@ -1,6 +1,7 @@
 'use server';
 
 import {naturalLanguageQuery} from '@/ai/flows/nlq-interface';
+import { explainCleaning } from '@/ai/flows/explain-cleaning';
 import {z} from 'zod';
 
 const NlqActionSchema = z.object({
@@ -38,4 +39,14 @@ export async function nlqAction(prevState: any, formData: FormData) {
     }
     return {success: false, error: 'An unexpected error occurred.', data: null};
   }
+}
+
+export async function explainCleaningAction() {
+    try {
+        const result = await explainCleaning({ techniques: [] }); // Input is currently unused in the flow
+        return { success: true, data: result, error: null };
+    } catch (error) {
+        console.error(error);
+        return { success: false, error: 'Failed to generate cleaning explanation.', data: null };
+    }
 }
