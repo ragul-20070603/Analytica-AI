@@ -1,8 +1,8 @@
 
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
-import { useDropzone } from 'react-dropzone';
+import { useState, useCallback } from 'react';
+import { useDropzone, FileRejection } from 'react-dropzone';
 import { UploadCloud, File as FileIcon, X } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
@@ -15,30 +15,27 @@ export default function DataUpload() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
   const [showMetadata, setShowMetadata] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const { toast } = useToast();
 
-  const onDrop = useCallback((acceptedFiles: File[], rejectedFiles: any[]) => {
-    if (acceptedFiles.length > 0) {
-      const selectedFile = acceptedFiles[0];
-      setFile(selectedFile);
-      setShowMetadata(false);
-      setError(null);
-    } else if (rejectedFiles.length > 0) {
-        setError('Please upload a CSV or XLSX file.');
-    }
-  }, []);
+  const onDrop = useCallback(
+    (acceptedFiles: File[], fileRejections: FileRejection[]) => {
+      if (fileRejections.length > 0) {
+        toast({
+          title: 'Invalid File Type',
+          description: 'Please upload a CSV or XLSX file.',
+          variant: 'destructive',
+        });
+        return;
+      }
 
-  useEffect(() => {
-    if (error) {
-      toast({
-        title: 'Invalid File Type',
-        description: error,
-        variant: 'destructive',
-      });
-      setError(null);
-    }
-  }, [error, toast]);
+      if (acceptedFiles.length > 0) {
+        const selectedFile = acceptedFiles[0];
+        setFile(selectedFile);
+        setShowMetadata(false);
+      }
+    },
+    [toast]
+  );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
