@@ -4,7 +4,9 @@ Analytica AI is a modern, AI-powered platform designed for seamless data ingesti
 The application also features a prototype of a blockchain-based version history system, showcasing how data provenance and immutability can be achieved for critical datasets.
 
 KEY FEATURES:
+
 Data Workflow Management:
+
 File Upload: Supports both CSV and XLSX file formats for data ingestion.
 AI-Powered Auto-Cleaning: Intelligently analyzes datasets and automatically suggests a cleaning plan, identifying appropriate techniques for missing value imputation and outlier detection.
 Manual Cleaning Configuration: Provides granular control over data cleaning with modules for schema mapping, missing value imputation (Mean, Median, KNN), outlier removal (IQR, Z-Score, Winsorization), and rule-based validation.
@@ -18,14 +20,18 @@ Data Provenance: Each version includes a unique commit hash, author, timestamp, 
 Integrations:
 Kaggle Integration: A dedicated page to simulate importing from and exporting datasets to Kaggle.
 
+
 AI AND GENKIT FLOWS:
+
 The application's AI capabilities are powered by Google's Gemini models through the Genkit framework. Key AI flows include:
 autoClean: Automatically proposes a data cleaning plan.
 explainCleaning: Explains the data cleaning techniques used in simple terms.
 naturalLanguageQuery: Answers user questions about the dataset.
 generateSmartDocumentation: (Not yet fully integrated) Can generate documentation for the processing steps.
 
+
 TECH STACK:
+
 Framework: Next.js (with App Router)
 Language: TypeScript
 UI: React
