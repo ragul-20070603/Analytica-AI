@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -121,8 +122,8 @@ function AppLayout({ children }: { children: React.ReactNode }) {
         </SidebarInset>
       </Sidebar>
       <main className="flex-1 min-h-screen bg-background">
-        <header className="flex items-center justify-between p-4 border-b md:justify-end bg-card">
-          <SidebarTrigger className="md:hidden" />
+        <header className="flex items-center justify-between p-4 border-b bg-card">
+          <SidebarTrigger />
           <Button variant="outline">Help & Feedback</Button>
         </header>
         <div className="p-4 lg:p-8">{children}</div>
