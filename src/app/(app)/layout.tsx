@@ -44,7 +44,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
               <div className="p-2 rounded-lg bg-primary text-primary-foreground">
                 <Database className="w-6 h-6" />
               </div>
-              <h1 className="text-2xl font-bold font-headline text-foreground">DataWise</h1>
+              <h1 className="text-2xl font-bold font-headline text-foreground">Analytica AI</h1>
             </div>
           </SidebarHeader>
           <SidebarContent>
@@ -97,11 +97,11 @@ function AppLayout({ children }: { children: React.ReactNode }) {
                 <div className="flex items-center gap-3 p-3 rounded-lg bg-card border cursor-pointer hover:bg-muted">
                     <Avatar>
                         <AvatarImage src="https://placehold.co/40x40" data-ai-hint="male avatar" />
-                        <AvatarFallback>DW</AvatarFallback>
+                        <AvatarFallback>AA</AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col text-left">
-                        <span className="font-semibold text-sm">Analytica Pro User</span>
-                        <span className="text-xs text-muted-foreground">user@analytica.pro</span>
+                        <span className="font-semibold text-sm">Analytica AI User</span>
+                        <span className="text-xs text-muted-foreground">user@analyticaai.pro</span>
                     </div>
                 </div>
               </DropdownMenuTrigger>

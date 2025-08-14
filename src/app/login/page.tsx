@@ -21,7 +21,7 @@ export default function LoginPage() {
             <div className="p-3 rounded-lg bg-primary text-primary-foreground">
                 <Database className="w-7 h-7" />
             </div>
-            <h1 className="text-4xl font-bold font-headline text-foreground">DataWise</h1>
+            <h1 className="text-4xl font-bold font-headline text-foreground">Analytica AI</h1>
         </div>
         <Tabs defaultValue="login" className="w-full">
           <TabsList className="grid w-full grid-cols-2">

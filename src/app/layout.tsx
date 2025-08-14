@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
-  title: 'DataWise',
+  title: 'Analytica AI',
   description: 'Cloud-based data ingestion, cleaning, analytics, and reporting platform.',
 };
 
