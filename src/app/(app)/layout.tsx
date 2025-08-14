@@ -3,7 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { AreaChart, Bot, Cog, Database, GitBranch, Home, UploadCloud } from 'lucide-react';
+import { AreaChart, Bot, Cog, Database, GitBranch, Home, UploadCloud, Beaker } from 'lucide-react';
 import {
   SidebarProvider,
   Sidebar,
@@ -54,6 +54,14 @@ function AppLayout({ children }: { children: React.ReactNode }) {
                   <Link href="/datasets">
                     <UploadCloud />
                     <span>Datasets & Versions</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={isActive('/cleaning')} tooltip="Cleaning">
+                  <Link href="/cleaning">
+                    <Beaker />
+                    <span>Data Cleaning</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
