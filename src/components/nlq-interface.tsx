@@ -1,6 +1,8 @@
+
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { nlqAction } from '@/lib/actions';
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
@@ -30,7 +32,7 @@ export default function NlqInterface() {
     data: { result: '' },
     error: null as string | null,
   };
-  const [state, formAction] = useFormState(nlqAction, initialState);
+  const [state, formAction] = useActionState(nlqAction, initialState);
 
   return (
     <Card className="max-w-2xl mx-auto">
